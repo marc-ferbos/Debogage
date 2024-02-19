@@ -13,11 +13,13 @@ const EventList = () => {
   const { data, error } = useData();
   const [type, setType] = useState();
   const [currentPage, setCurrentPage] = useState(1);
-  const filteredEvents = (
+  /* Filtrer les événements par type et les trier par ordre décroissant */
+  const filteredEvents = ( 
     (!type
       ? data?.events
-      : data?.events) || []
-  ).filter((event, index) => {
+      : data?.events.filter(event => event.type === type)) || [] /* Si le type est défini, on filtre les événements par type */
+  ).sort ((a, b) => new Date(a.date) - new Date(b.date)) /* On trie les événements par ordre décroissant */
+  .filter((event, index) => {
     if (
       (currentPage - 1) * PER_PAGE <= index &&
       PER_PAGE * currentPage > index

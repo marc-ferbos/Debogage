@@ -25,7 +25,7 @@ const data = {
     {
       id: 2,
       type: "forum",
-      date: "2022-04-29T20:28:45.744Z",
+      date: "2022-03-29T20:28:45.744Z",
       title: "Forum #productCON",
       cover: "/images/stem-list-EVgsAbL51Rk-unsplash.png",
       description:
@@ -59,7 +59,7 @@ describe("When Events is created", () => {
     });
   });
   describe("and we select a category", () => {
-    it.only("an filtered list is displayed", async () => {
+    it("an filtered list is displayed", async () => {
       api.loadData = jest.fn().mockReturnValue(data);
       render(
         <DataProvider>
